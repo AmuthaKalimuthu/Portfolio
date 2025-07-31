@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Amutha K | Resume</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"/>
+  <style>
+    :root {
+      --primary: #0d6efd;
+      --bg-dark: #181c24;
+      --bg-gradient1: #2b2e4a;
+      --bg-gradient2: #232946;
+      --accent: #f7971e;
+      --blur1: #ff6a00;
+      --blur2: #00c3ff;
+      --blur3: #ff61a6;
+    }
+    body {
+      background: linear-gradient(135deg, var(--bg-gradient1) 0%, var(--bg-gradient2) 100%);
+      color: #f8f9fa;
+      min-height: 100vh;
+      font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+    .gradient-blur {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.5;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .blur1 { width: 400px; height: 400px; background: var(--blur1); top: -100px; left: -100px;}
+    .blur2 { width: 300px; height: 300px; background: var(--blur2); bottom: 10%; right: 5%;}
+    .blur3 { width: 250px; height: 250px; background: var(--blur3); top: 60%; left: 60%;}
+    .navbar {
+      background: rgba(24,28,36,0.95)!important;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+    .navbar-brand, .nav-link {
+      color: #fff !important;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    .nav-link.active, .nav-link:hover {
+      color: var(--accent) !important;
+    }
+    .resume-header {
+      background: #232946;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      margin-bottom: 2rem;
+    }
+    .profile-img {
+      width: 120px; height: 120px; object-fit: cover;
+      border-radius: 50%; border: 4px solid var(--accent);
+      box-shadow: 0 4px 32px rgba(0,0,0,0.3);
+    }
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--accent);
+      letter-spacing: 1px;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.5rem;
+    }
+    .resume-card {
+      background: #232946;
+      border-radius: 14px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+      transition: transform 0.3s, box-shadow 0.3s;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+    .resume-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0,195,255,0.18);
+    }
+    .contact-info a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .contact-info a:hover {
+      color: var(--primary);
+    }
+    .skill-badge {
+      background: var(--accent);
+      color: #181c24;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin: 0.2rem;
+      display: inline-block;
+    }
+    .project-item {
+      border-left: 3px solid var(--accent);
+      padding-left: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .education-item {
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .download-btn {
+      background: var(--accent);
+      color: #181c24;
+      border: none;
+      border-radius: 30px;
+      padding: 0.8rem 2rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 12px rgba(247,151,30,0.2);
+      transition: background 0.3s, transform 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .download-btn:hover {
+      background: var(--primary);
+      color: #fff;
+      transform: scale(1.05);
+      text-decoration: none;
+    }
+    .back-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      padding: 0.6rem 1.5rem;
+      font-weight: 600;
+      transition: background 0.3s, transform 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .back-btn:hover {
+      background: var(--accent);
+      color: #181c24;
+      transform: scale(1.05);
+      text-decoration: none;
+    }
+    .section {
+      padding: 40px 0;
+      position: relative;
+      z-index: 1;
+    }
+    @media (max-width: 768px) {
+      .section-title { font-size: 1.5rem;}
+      .profile-img { width: 100px; height: 100px;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Gradient Blurs -->
+  <div class="gradient-blur blur1"></div>
+  <div class="gradient-blur blur2"></div>
+  <div class="gradient-blur blur3"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Amutha K</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link active" href="resume.html">Resume</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Resume Header -->
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="resume-header p-4" data-aos="fade-down">
+            <div class="row align-items-center">
+              <div class="col-md-3 text-center">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=" alt="Amutha K" class="profile-img mb-3"/>
+              </div>
+              <div class="col-md-9">
+                <h1 class="display-5 fw-bold mb-3">Amutha K</h1>
+                <p class="lead mb-3">Software Developer | Full Stack Engineer | Machine Learning Enthusiast</p>
+                <div class="contact-info">
+                  <p class="mb-1"><i class="bi bi-envelope"></i> <a href="mailto:kamuths03@gmail.com">kamuths03@gmail.com</a></p>
+                  <p class="mb-1"><i class="bi bi-telephone"></i> 8148006482</p>
+                  <p class="mb-1"><i class="bi bi-linkedin"></i> <a href="https://linkedin.com/in/amuthakalimuthu" target="_blank">linkedin.com/in/amuthakalimuthu</a></p>
+                  <p class="mb-1"><i class="bi bi-github"></i> <a href="https://github.com/AmuthaKalimuthu" target="_blank">github.com/AmuthaKalimuthu</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="row mb-4" data-aos="fade-up">
+        <div class="col-12 text-center">
+          <a href="https://flowcv.com/resume/s9mloco7akih" target="_blank" class="download-btn me-3">
+            <i class="bi bi-download"></i> View on FlowCV
+          </a>
+          <a href="index.html" class="back-btn">
+            <i class="bi bi-arrow-left"></i> Back to Portfolio
+          </a>
+        </div>
+      </div>
+
+      <!-- Objective -->
+      <div class="row" data-aos="fade-up">
+        <div class="col-12">
+          <div class="resume-card p-4">
+                         <h2 class="section-title">Objective</h2>
+             <p class="lead">As an enthusiastic, technology-driven individual, I look forward to applying my technical skills and problem-solving mindset to deliver impactful solutions that support organizational growth.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="row" data-aos="fade-up">
+        <div class="col-12">
+          <div class="resume-card p-4">
+            <h2 class="section-title">Education</h2>
+            <div class="education-item">
+              <h5><strong>B.E Computer Science and Engineering</strong></h5>
+              <p class="mb-1"><i class="bi bi-building"></i> Sri Ramakrishna Institute of Technology</p>
+              <p class="mb-1"><i class="bi bi-geo-alt"></i> Coimbatore | 2021 – 2025</p>
+              <p class="mb-0"><i class="bi bi-star"></i> CGPA: 8.74</p>
+            </div>
+            <div class="education-item">
+              <h5><strong>HSC</strong></h5>
+              <p class="mb-1"><i class="bi bi-building"></i> Vidya Nethrra Matriculation Higher Secondary School</p>
+              <p class="mb-1"><i class="bi bi-geo-alt"></i> Pollachi | 2020 – 2021</p>
+              <p class="mb-0"><i class="bi bi-star"></i> Percentage: 91.2%</p>
+            </div>
+            <div class="education-item">
+              <h5><strong>SSLC</strong></h5>
+              <p class="mb-1"><i class="bi bi-building"></i> Nachiar Vidyalayam Matriculation Higher Secondary School</p>
+              <p class="mb-1"><i class="bi bi-geo-alt"></i> Pollachi | 2018 – 2019</p>
+              <p class="mb-0"><i class="bi bi-star"></i> Percentage: 88%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <div class="row" data-aos="fade-up">
+        <div class="col-12">
+          <div class="resume-card p-4">
+            <h2 class="section-title">Skills</h2>
+                         <div class="mb-3">
+               <h6><strong>Programming Languages:</strong></h6>
+               <span class="skill-badge">Java</span>
+               <span class="skill-badge">Python</span>
+               <span class="skill-badge">JavaScript</span>
+             </div>
+            <div class="mb-3">
+              <h6><strong>Web Technologies:</strong></h6>
+              <span class="skill-badge">HTML</span>
+              <span class="skill-badge">CSS</span>
+              <span class="skill-badge">Bootstrap</span>
+            </div>
+            <div class="mb-3">
+              <h6><strong>Databases:</strong></h6>
+              <span class="skill-badge">MySQL</span>
+              <span class="skill-badge">Oracle</span>
+            </div>
+            <div class="mb-3">
+              <h6><strong>Frameworks:</strong></h6>
+              <span class="skill-badge">Hibernate</span>
+              <span class="skill-badge">Spring</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Area of Interest -->
+      <div class="row" data-aos="fade-up">
+        <div class="col-12">
+          <div class="resume-card p-4">
+            <h2 class="section-title">Area of Interest</h2>
+            <ul class="list-unstyled">
+              <li><i class="bi bi-check-circle text-success"></i> Full Stack Web Development</li>
+              <li><i class="bi bi-check-circle text-success"></i> Backend Developer</li>
+              <li><i class="bi bi-check-circle text-success"></i> Frontend Developer</li>
+              <li><i class="bi bi-check-circle text-success"></i> Machine Learning</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projects -->
+      <div class="row" data-aos="fade-up">
+        <div class="col-12">
+          <div class="resume-card p-4">
+            <h2 class="section-title">Projects</h2>
+            
+                         <div class="project-item">
+               <h5><strong>Food Delivery App</strong></h5>
+               <p>DineElite is a web-based food ordering application that allows users to browse restaurant menus, add items to a cart, and place orders seamlessly.</p>
+               <p><strong>Technologies Used:</strong> HTML, CSS, MySQL, Java, JDBC, JSP, Servlets</p>
+               <p><strong>Roles & Responsibilities:</strong></p>
+               <ul>
+                 <li>Designed frontend using HTML & CSS</li>
+                 <li>Implemented dynamic pages using JSP and Java Servlets</li>
+                 <li>Managed database operations with JDBC and MySQL</li>
+                 <li>Developed features for login, cart, and order checkout</li>
+                 <li>Ensured secure user sessions and smooth navigation</li>
+               </ul>
+             </div>
+
+             <div class="project-item">
+               <h5><strong>Weather Forecast API Application</strong></h5>
+               <p>A Spring Boot based web app that fetches and displays real-time weather data using the OpenWeatherMap API, based on user input.</p>
+               <p><strong>Technologies Used:</strong> HTML, CSS, Java, Spring Boot, JSP, Servlets, OpenWeatherMap API</p>
+               <p><strong>Roles & Responsibilities:</strong></p>
+               <ul>
+                 <li>Designed and developed a RESTful Spring Boot backend to fetch and process weather data.</li>
+                 <li>Integrated OpenWeatherMap API to dynamically display temperature, humidity, and climate conditions.</li>
+                 <li>Built the frontend UI using HTML and CSS with responsive design.</li>
+                 <li>Handled API responses and error cases gracefully using exception handling.t</li>
+                 <li>Deployed and tested the application using Eclipse IDE and local server setup.</li>
+               </ul>
+             </div>
+
+             <div class="project-item">
+               <h5><strong>Final Year Project: The Crop Yield Prediction Using Machine Learning Techniques</strong></h5>
+               <p>Developed a model to predict crop yields based on historical data using various machine learning algorithms.</p>
+               <p><strong>Technologies Used:</strong> Python, Pandas, scikit-learn, NumPy, Matplotlib, Jupyter Notebook</p>
+               <p><strong>Roles & Responsibilities:</strong></p>
+               <ul>
+                 <li>Collected and preprocessed agricultural datasets</li>
+                 <li>Applied feature extraction and reduction techniques (e.g., PCA)</li>
+                 <li>Trained and evaluated models using algorithms like Decision Tree and Random Forest</li>
+                 <li>Visualized results using graphs and accuracy metrics</li>
+                 <li>Documented findings and presented outcomes with real-time insights</li>
+               </ul>
+             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certificates -->
+      <div class="row" data-aos="fade-up">
+        <div class="col-12">
+          <div class="resume-card p-4">
+            <h2 class="section-title">Certificates</h2>
+            <div class="education-item">
+              <h5><strong>Full Stack Web Development Certification</strong></h5>
+              <p class="mb-1"><i class="bi bi-building"></i> TAP Academy</p>
+              <p class="mb-1"><i class="bi bi-calendar"></i> January 2025 - June 2025</p>
+              <ul class="mb-0">
+                <li>Completed a comprehensive training program covering HTML, CSS, JavaScript, Java, SQL, JDBC, Hibernate and Spring Boot.</li>
+                <li>Gained hands-on experience by building real-time projects and solving industry-based coding problems.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Internship -->
+      <div class="row" data-aos="fade-up">
+        <div class="col-12">
+          <div class="resume-card p-4">
+            <h2 class="section-title">Internship</h2>
+            <div class="education-item">
+              <h5><strong>Accent Techno Soft</strong> <span class="badge bg-success">June 2023</span></h5>
+              <p class="mb-1"><i class="bi bi-briefcase"></i> Role: Web Development Intern</p>
+              <p class="mb-1"><i class="bi bi-tools"></i> Skills Gained: PHP, MySQL</p>
+              <ul class="mb-0">
+                <li>Worked on building and maintaining dynamic web applications using PHP and MySQL.</li>
+                <li>Gained hands-on experience in backend development, form handling, database integration, and performing CRUD operations.</li>
+                <li>Collaborated on real-time projects, enhancing both coding and problem-solving skills in a professional environment.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Achievements -->
+      <div class="row" data-aos="fade-up">
+        <div class="col-12">
+          <div class="resume-card p-4">
+            <h2 class="section-title">Achievements</h2>
+            <div class="education-item">
+              <h5><strong>Best Paper Award</strong></h5>
+              <p class="mb-0">Presented a research paper on "FARM MONITORING AND DISEASE PREDICTION" using Machine Learning Techniques as Team Leader.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Leadership -->
+      <div class="row" data-aos="fade-up">
+        <div class="col-12">
+          <div class="resume-card p-4">
+            <h2 class="section-title">Leadership</h2>
+            <div class="education-item">
+              <h5><strong>Student Innovation Hub Club</strong></h5>
+              <p class="mb-0">Served as HR of Student Innovation Hub Club, demonstrating leadership.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-center py-4" style="background:#181c24;color:#fff;">
+    <small>© 2025 Amutha K. All Rights Reserved.</small>
+  </footer>
+
+  <!-- JS Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // AOS
+    AOS.init({ once: true, duration: 900 });
+  </script>
+</body>
+</html> 

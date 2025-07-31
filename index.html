@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Amutha K | Portfolio</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"/>
+  <style>
+    :root {
+      --primary: #0d6efd;
+      --bg-dark: #181c24;
+      --bg-gradient1: #2b2e4a;
+      --bg-gradient2: #232946;
+      --accent: #f7971e;
+      --blur1: #ff6a00;
+      --blur2: #00c3ff;
+      --blur3: #ff61a6;
+    }
+    body {
+      background: linear-gradient(135deg, var(--bg-gradient1) 0%, var(--bg-gradient2) 100%);
+      color: #f8f9fa;
+      min-height: 100vh;
+      font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+    .gradient-blur {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.5;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .blur1 { width: 400px; height: 400px; background: var(--blur1); top: -100px; left: -100px;}
+    .blur2 { width: 300px; height: 300px; background: var(--blur2); bottom: 10%; right: 5%;}
+    .blur3 { width: 250px; height: 250px; background: var(--blur3); top: 60%; left: 60%;}
+    .navbar {
+      background: rgba(24,28,36,0.95)!important;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+    .navbar-brand, .nav-link {
+      color: #fff !important;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    .nav-link.active, .nav-link:hover {
+      color: var(--accent) !important;
+    }
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, #f7971e, #00c3ff, #ff61a6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeInDown 1s;
+    }
+    .typed-cursor { color: var(--accent); font-size: 2rem;}
+    .hero-btn {
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      padding: 0.75rem 2.5rem;
+      border-radius: 30px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      box-shadow: 0 4px 24px rgba(13,110,253,0.2);
+      transition: background 0.3s, transform 0.2s;
+    }
+    .hero-btn:hover {
+      background: var(--accent);
+      color: #181c24;
+      transform: scale(1.05);
+    }
+    .profile-img {
+      width: 180px; height: 180px; object-fit: cover;
+      border-radius: 50%; border: 4px solid var(--accent);
+      box-shadow: 0 4px 32px rgba(0,0,0,0.3);
+      transition: transform 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    .profile-img:hover { transform: scale(1.08) rotate(-3deg);}
+    .section {
+      padding: 80px 0 60px 0;
+      position: relative;
+      z-index: 1;
+    }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: var(--accent);
+      letter-spacing: 1px;
+    }
+    .resume-btn {
+      background: var(--accent);
+      color: #181c24;
+      border: none;
+      border-radius: 30px;
+      padding: 0.6rem 2rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 12px rgba(247,151,30,0.2);
+      transition: background 0.3s, transform 0.2s;
+    }
+    .resume-btn:hover {
+      background: var(--primary);
+      color: #fff;
+      transform: scale(1.08) rotate(-2deg);
+    }
+    .project-card {
+      background: #232946;
+      border-radius: 18px;
+      box-shadow: 0 2px 24px rgba(0,0,0,0.18);
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(.68,-0.55,.27,1.55), box-shadow 0.3s;
+      position: relative;
+    }
+    .project-card:hover {
+      transform: scale(1.04) rotate(-1deg);
+      box-shadow: 0 8px 32px rgba(0,195,255,0.18);
+      z-index: 2;
+    }
+    .project-icon {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 2px 8px #f7971e88);
+      transition: filter 0.3s;
+    }
+    .project-card:hover .project-icon {
+      filter: drop-shadow(0 4px 16px #00c3ffcc);
+    }
+    .project-links a {
+      color: var(--primary);
+      margin-right: 1rem;
+      font-size: 1.3rem;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+    .project-links a:hover {
+      color: var(--accent);
+      text-shadow: 0 2px 8px #f7971e88;
+    }
+    .skill-meter {
+      width: 120px; height: 120px; margin: 0 auto 1rem auto;
+      position: relative;
+    }
+    .skill-meter svg { transform: rotate(-90deg);}
+    .skill-meter .skill-value {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      font-size: 1.3rem; font-weight: 700; color: var(--accent);
+    }
+    .article-card {
+      background: #232946;
+      border-radius: 14px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+      transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+      overflow: hidden;
+    }
+    .article-card:hover {
+      transform: scale(1.03) translateY(-4px);
+      filter: blur(0.5px) brightness(1.1);
+      box-shadow: 0 8px 32px #ff61a688;
+    }
+    .contact-form input, .contact-form textarea {
+      background: #232946;
+      color: #fff;
+      border: 1.5px solid #444;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px #f7971e44;
+    }
+    .social-fixed {
+      position: fixed; top: 50%; left: 24px; z-index: 100;
+      display: flex; flex-direction: column; gap: 18px;
+      transform: translateY(-50%);
+    }
+    .social-fixed a {
+      color: #fff; background: #232946; border-radius: 50%;
+      width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; box-shadow: 0 2px 8px #00c3ff44;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+    .social-fixed a:hover {
+      background: var(--accent);
+      color: #181c24;
+      box-shadow: 0 4px 16px #f7971e88;
+    }
+    .social-fixed a::after {
+      content: attr(data-bs-original-title);
+      position: absolute; left: 120%; top: 50%; transform: translateY(-50%);
+      background: #232946; color: #fff; padding: 2px 10px; border-radius: 6px;
+      font-size: 0.9rem; opacity: 0; pointer-events: none; transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .social-fixed a:hover::after { opacity: 1;}
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.1rem;}
+      .section { padding: 50px 0 30px 0;}
+      .social-fixed { left: 8px;}
+    }
+    @media (max-width: 576px) {
+      .profile-img { width: 120px; height: 120px;}
+      .skill-meter { width: 80px; height: 80px;}
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <!-- Gradient Blurs -->
+  <div class="gradient-blur blur1"></div>
+  <div class="gradient-blur blur2"></div>
+  <div class="gradient-blur blur3"></div>
+  <!-- Particles.js -->
+  <div id="particles-js" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;"></div>
+
+  <!-- Social Media Fixed -->
+  <div class="social-fixed">
+    <a href="https://linkedin.com/in/amuthakalimuthu" target="_blank" data-bs-original-title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+    <a href="https://github.com/AmuthaKalimuthu" target="_blank" data-bs-original-title="GitHub"><i class="bi bi-github"></i></a>
+         <a href="mailto:kamuths03@gmail.com" data-bs-original-title="Email"><i class="bi bi-envelope"></i></a>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Amutha K</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <!--<li class="nav-item"><a class="nav-link" href="#articles">Articles</a></li>-->
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="container position-relative" style="z-index:2;">
+      <h1 class="hero-title mb-3" data-aos="fade-down">Amutha K</h1>
+      <h2 class="mb-4" style="font-weight:600;">
+        <span id="typed"></span>
+      </h2>
+      <button class="hero-btn" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})" data-aos="zoom-in">View My Work <i class="bi bi-arrow-down"></i></button>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4 text-center" data-aos="fade-right">
+                     <img src="Me.jpg" alt="Amutha K" class="profile-img" data-tilt data-tilt-max="12" data-tilt-speed="400"/>
+        </div>
+        <div class="col-md-8" data-aos="fade-left">
+          <h2 class="section-title">About Me</h2>
+          <p>
+            I am Amutha K, a passionate software developer with a strong foundation in computer science and hands-on experience in full stack development and machine learning. I thrive on building impactful web applications and solving real-world problems through technology.
+          </p>
+          <p>
+            My journey includes developing dynamic web apps, integrating APIs, and leading teams in academic and professional settings. I am committed to continuous learning and delivering high-quality solutions.
+          </p>
+                     <a href="resume.html" class="resume-btn mt-3 me-3">
+             <i class="bi bi-file-earmark-text"></i> View Resume
+           </a>
+           <a href="https://flowcv.com/resume/s9mloco7akih" target="_blank" class="resume-btn mt-3">
+             <i class="bi bi-download"></i> Download PDF
+           </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="section" id="projects">
+    <div class="container">
+      <h2 class="section-title text-center" data-aos="fade-up">Projects</h2>
+      <div class="row g-4">
+                 <!-- Weather Forecast API Application -->
+         <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+           <div class="project-card p-4" data-tilt data-tilt-max="8">
+             <div class="project-icon"><i class="bi bi-cloud-sun"></i></div>
+             <h5>Weather Forecast API Application</h5>
+             <p>A Spring Boot based web app that fetches and displays real-time weather data using the OpenWeatherMap API, based on user input.</p>
+             <div class="mb-2"><span class="badge bg-primary">Java</span> <span class="badge bg-success">Spring Boot</span> <span class="badge bg-info">JSP</span></div>
+             <div class="project-links">
+               <a href="https://github.com/AmuthaKalimuthu" target="_blank" title="GitHub"><i class="bi bi-github"></i></a>
+               <a href="#" target="_blank" title="Live Preview"><i class="bi bi-box-arrow-up-right"></i></a>
+             </div>
+           </div>
+         </div>
+        <!-- Food Delivery App -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="project-card p-4" data-tilt data-tilt-max="8">
+            <div class="project-icon"><i class="bi bi-bag-heart"></i></div>
+            <h5>Food Delivery App</h5>
+            <p>Web-based food ordering platform for browsing menus, adding items to cart, and placing orders.</p>
+            <div class="mb-2"><span class="badge bg-primary">Java</span> <span class="badge bg-success">MySQL</span> <span class="badge bg-warning text-dark">JSP</span></div>
+            <div class="project-links">
+              <a href="https://github.com/AmuthaKalimuthu" target="_blank" title="GitHub"><i class="bi bi-github"></i></a>
+              <a href="#" target="_blank" title="Live Preview"><i class="bi bi-box-arrow-up-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <!-- Crop Yield Prediction -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="project-card p-4" data-tilt data-tilt-max="8">
+            <div class="project-icon"><i class="bi bi-graph-up"></i></div>
+            <h5>Crop Yield Prediction Using ML</h5>
+            <p>Built a model to predict crop yields using historical data and machine learning algorithms.</p>
+            <div class="mb-2"><span class="badge bg-success">Python</span> <span class="badge bg-info">scikit-learn</span> <span class="badge bg-warning text-dark">Pandas</span></div>
+            <div class="project-links">
+              <a href="https://github.com/AmuthaKalimuthu" target="_blank" title="GitHub"><i class="bi bi-github"></i></a>
+              <a href="#" target="_blank" title="Live Preview"><i class="bi bi-box-arrow-up-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <!-- TicTacToe Game -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="project-card p-4" data-tilt data-tilt-max="8">
+            <div class="project-icon"><i class="bi bi-grid-3x3-gap"></i></div>
+            <h5>TicTacToe Game</h5>
+            <p>Java-based Tic-Tac-Toe game with Human vs. Human and Human vs. AI modes, using OOP concepts.</p>
+            <div class="mb-2"><span class="badge bg-primary">Java</span> <span class="badge bg-success">OOP</span> <span class="badge bg-warning text-dark">Swing</span></div>
+            <div class="project-links">
+              <a href="https://github.com/AmuthaKalimuthu" target="_blank" title="GitHub"><i class="bi bi-github"></i></a>
+              <a href="#" target="_blank" title="Live Preview"><i class="bi bi-box-arrow-up-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="section" id="skills">
+    <div class="container">
+      <h2 class="section-title text-center" data-aos="fade-up">Skills</h2>
+      <div class="row justify-content-center">
+         <div class="col-6 col-md-3 text-center" data-aos="fade-up" data-aos-delay="100">
+           <div class="skill-meter" data-percent="95">
+             <svg width="120" height="120">
+               <circle cx="60" cy="60" r="50" stroke="#444" stroke-width="12" fill="none"/>
+               <circle class="skill-bar" cx="60" cy="60" r="50" stroke="#00c3ff" stroke-width="12" fill="none" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314"/>
+             </svg>
+             <div class="skill-value">95%</div>
+           </div>
+           <div>Java</div>
+         </div>
+          <div class="col-6 col-md-3 text-center" data-aos="fade-up" data-aos-delay="200">
+           <div class="skill-meter" data-percent="85">
+             <svg width="120" height="120">
+               <circle cx="60" cy="60" r="50" stroke="#444" stroke-width="12" fill="none"/>
+               <circle class="skill-bar" cx="60" cy="60" r="50" stroke="#ff61a6" stroke-width="12" fill="none" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314"/>
+             </svg>
+             <div class="skill-value">85%</div>
+           </div>
+           <div>Python</div>
+         </div>
+                 <div class="col-6 col-md-3 text-center" data-aos="fade-up" data-aos-delay="0">
+           <div class="skill-meter" data-percent="85">
+             <svg width="120" height="120">
+               <circle cx="60" cy="60" r="50" stroke="#444" stroke-width="12" fill="none"/>
+               <circle class="skill-bar" cx="60" cy="60" r="50" stroke="#f7971e" stroke-width="12" fill="none" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314"/>
+             </svg>
+             <div class="skill-value">85%</div>
+           </div>
+           <div>JavaScript</div>
+         </div>
+       
+        
+         <div class="col-6 col-md-3 text-center" data-aos="fade-up" data-aos-delay="300">
+           <div class="skill-meter" data-percent="100">
+             <svg width="120" height="120">
+               <circle cx="60" cy="60" r="50" stroke="#444" stroke-width="12" fill="none"/>
+               <circle class="skill-bar" cx="60" cy="60" r="50" stroke="#f7971e" stroke-width="12" fill="none" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314"/>
+             </svg>
+             <div class="skill-value">100%</div>
+           </div>
+           <div>HTML/CSS/Bootstrap</div>
+         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles Section 
+  <section class="section" id="articles">
+    <div class="container">
+      <h2 class="section-title text-center" data-aos="fade-up">Featured Articles</h2>
+      <div class="row g-4">
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="0">
+          <a href="#" class="article-card d-block p-4 text-decoration-none text-white">
+            <h5>How I Built a Weather App with OpenWeatherMap API</h5>
+            <p class="mb-0">A step-by-step guide to building a modern weather dashboard using JavaScript and Bootstrap.</p>
+          </a>
+        </div>
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <a href="#" class="article-card d-block p-4 text-decoration-none text-white">
+            <h5>Machine Learning in Agriculture: Crop Yield Prediction</h5>
+            <p class="mb-0">Exploring the application of ML algorithms for predicting agricultural outcomes.</p>
+          </a>
+        </div>
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <a href="#" class="article-card d-block p-4 text-decoration-none text-white">
+            <h5>Full Stack Development: From Frontend to Backend</h5>
+            <p class="mb-0">My journey through building complete web applications with modern technologies.</p>
+          </a>
+        </div>
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <a href="#" class="article-card d-block p-4 text-decoration-none text-white">
+            <h5>Best Practices for Java Web Development</h5>
+            <p class="mb-0">Essential tips and techniques for building robust Java web applications.</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>-->
+
+  <!-- Contact Section -->
+  <section class="section" id="contact">
+    <div class="container">
+      <h2 class="section-title text-center" data-aos="fade-up">Contact Me</h2>
+             <form class="contact-form mx-auto" style="max-width:500px;" action="mailto:kamuths03@gmail.com" method="POST" enctype="text/plain" data-aos="fade-up" data-aos-delay="100">
+        <input type="text" class="form-control" name="Name" placeholder="Your Name" required>
+        <input type="email" class="form-control" name="Email" placeholder="Your Email" required>
+        <textarea class="form-control" name="Message" rows="4" placeholder="Your Message" required></textarea>
+        <button type="submit" class="resume-btn w-100 mt-2"><i class="bi bi-send"></i> Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="text-center py-4" style="background:#181c24;color:#fff;">
+    <small>© 2025 Amutha K. All Rights Reserved.</small>
+  </footer>
+
+  <!-- JS Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script>
+    // Particles.js config
+    particlesJS('particles-js', {
+      "particles": {
+        "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": ["#f7971e", "#00c3ff", "#ff61a6"] },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.5, "random": true },
+        "size": { "value": 5, "random": true },
+        "line_linked": { "enable": true, "distance": 120, "color": "#fff", "opacity": 0.2, "width": 1 },
+        "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out" }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": { "enable": true, "mode": "repulse" },
+          "onclick": { "enable": true, "mode": "push" }
+        },
+        "modes": {
+          "repulse": { "distance": 100, "duration": 0.4 },
+          "push": { "particles_nb": 4 }
+        }
+      },
+      "retina_detect": true
+    });
+
+    // Typed.js
+    new Typed('#typed', {
+      strings: [
+        "Software Developer",
+        "Full Stack Engineer",
+        "Machine Learning Enthusiast",
+        "Building Interactive Web Apps"
+      ],
+      typeSpeed: 60,
+      backSpeed: 30,
+      backDelay: 1200,
+      loop: true
+    });
+
+    // AOS
+    AOS.init({ once: true, duration: 900 });
+
+    // VanillaTilt
+    VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+      max: 12,
+      speed: 400,
+      glare: true,
+      "max-glare": 0.18
+    });
+
+    // Animated skill meters
+    document.querySelectorAll('.skill-meter').forEach(function(meter) {
+      const percent = meter.getAttribute('data-percent');
+      const circle = meter.querySelector('.skill-bar');
+      const value = meter.querySelector('.skill-value');
+      const radius = 50, circumference = 2 * Math.PI * radius;
+      circle.style.strokeDasharray = circumference;
+      circle.style.strokeDashoffset = circumference;
+      let progress = 0;
+      function animate() {
+        if (progress < percent) {
+          progress++;
+          circle.style.strokeDashoffset = circumference - (progress/100)*circumference;
+          value.textContent = progress + '%';
+          requestAnimationFrame(animate);
+        }
+      }
+      // Animate when in view
+      const observer = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) animate();
+      }, { threshold: 0.7 });
+      observer.observe(meter);
+    });
+
+    // Smooth scrolling for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Active navigation highlighting
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
